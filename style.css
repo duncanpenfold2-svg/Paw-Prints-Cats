@@ -1,0 +1,845 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  background: #f2f4f8;
+  color: #111827;
+}
+
+.app {
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 24px 16px 56px;
+}
+
+.hidden {
+  display: none !important;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+
+/* ── Auth ── */
+
+.auth-page .app {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-height: 100vh;
+  padding: 40px 20px;
+}
+
+.auth-card {
+  max-width: 420px;
+  margin: 0 auto;
+  background: #fff;
+  border: 1px solid #e5e7eb;
+  border-radius: 24px;
+  padding: 36px 32px 32px;
+  box-shadow: 0 8px 32px rgba(15, 23, 42, 0.07);
+}
+
+.hero--auth {
+  text-align: center;
+  margin-bottom: 24px;
+}
+
+.paw-icon {
+  width: 96px;
+  height: 96px;
+  border-radius: 50%;
+  background: #7C3AED;
+  color: #fff;
+  display: grid;
+  place-items: center;
+  margin: 0 auto 16px;
+  box-shadow: 0 8px 24px rgba(124, 58, 237, 0.35);
+}
+
+.paw-icon svg {
+  width: 48px;
+  height: 48px;
+}
+
+.paw-icon--small {
+  width: 36px;
+  height: 36px;
+  margin: 0;
+  box-shadow: none;
+}
+
+.paw-icon--small svg {
+  width: 20px;
+  height: 20px;
+}
+
+h1 {
+  margin: 0 0 6px;
+  font-size: clamp(1.5rem, 5vw, 1.9rem);
+  font-weight: 800;
+}
+
+.hero--auth p {
+  color: #6b7280;
+  margin: 0;
+  font-size: 1rem;
+}
+
+/* Tabs */
+.auth-tabs {
+  display: flex;
+  background: #f3f4f6;
+  border-radius: 12px;
+  padding: 4px;
+  margin-bottom: 28px;
+  gap: 4px;
+}
+
+.auth-tab {
+  flex: 1;
+  background: none;
+  border: none;
+  border-radius: 9px;
+  padding: 9px 12px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #6b7280;
+  cursor: pointer;
+  transition: background 0.15s, color 0.15s, box-shadow 0.15s;
+}
+
+.auth-tab.active {
+  background: #fff;
+  color: #8B5E3C;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Forms */
+.auth-form {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.field-label {
+  display: block;
+  margin: 20px 0 8px;
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: #374151;
+}
+
+.field-label:first-of-type {
+  margin-top: 0;
+}
+
+.auth-form input,
+.data-form input[type="text"],
+.data-form input[type="email"],
+.data-form input[type="password"],
+.data-form input[type="tel"],
+.data-form input[type="date"],
+.data-form input[type="time"],
+.data-form textarea,
+.data-form select {
+  width: 100%;
+  padding: 13px 15px;
+  border-radius: 12px;
+  border: 1px solid #d1d5db;
+  font-size: 1rem;
+  color: #111827;
+  background: #fff;
+  font-family: inherit;
+  transition: border-color 0.15s, box-shadow 0.15s;
+}
+
+.auth-form input:focus,
+.data-form input:focus,
+.data-form textarea:focus,
+.data-form select:focus {
+  outline: none;
+  border-color: #8B5E3C;
+  box-shadow: 0 0 0 3px rgba(124, 58, 237, 0.15);
+}
+
+.data-form textarea {
+  resize: vertical;
+  min-height: 72px;
+}
+
+.auth-submit-btn {
+  width: 100%;
+  margin-top: 28px;
+  padding: 15px;
+}
+
+/* Password eye toggle */
+.password-wrap {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.password-wrap input {
+  width: 100%;
+  padding-right: 46px !important;
+}
+
+.eye-btn {
+  position: absolute;
+  right: 8px;
+  background: #f3f4f6;
+  border: 1px solid #d1d5db;
+  padding: 6px 8px;
+  border-radius: 8px;
+  color: #374151;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.78rem;
+  font-weight: 600;
+  gap: 4px;
+  white-space: nowrap;
+}
+
+.eye-btn:hover {
+  background: #DDD6FE;
+  border-color: #8B5E3C;
+  color: #8B5E3C;
+}
+
+.eye-icon {
+  width: 16px;
+  height: 16px;
+}
+
+/* First-time welcome hint */
+.first-time-hint {
+  background: #EDE9FE;
+  border: 1px solid #C4B5FD;
+  border-radius: 12px;
+  padding: 12px 16px;
+  font-size: 0.9rem;
+  color: #4C1D95;
+  margin-bottom: 4px;
+  text-align: center;
+}
+
+.auth-status {
+  margin-top: 20px;
+  text-align: center;
+  font-size: 0.9rem;
+  color: #6b7280;
+  min-height: 1.4em;
+}
+
+/* ── Buttons ── */
+
+button {
+  border: 0;
+  border-radius: 999px;
+  padding: 10px 18px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  font-family: inherit;
+  transition: opacity 0.15s, transform 0.1s;
+}
+
+button:active {
+  transform: scale(0.97);
+}
+
+button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.primary-btn {
+  background: #8B5E3C;
+  color: #fff;
+  box-shadow: 0 4px 14px rgba(124, 58, 237, 0.35);
+}
+
+.mini-btn {
+  background: #EDE9FE;
+  color: #1f2937;
+  font-size: 0.88rem;
+  padding: 8px 14px;
+}
+
+.accent-btn {
+  background: #EDE9FE;
+  color: #4C1D95;
+}
+
+.mini-btn.danger {
+  background: #fee2e2;
+  color: #991b1b;
+}
+
+.back-btn {
+  background: none;
+  color: #8B5E3C;
+  padding: 0;
+  border-radius: 0;
+  font-size: 0.95rem;
+  margin-bottom: 20px;
+}
+
+/* ── App layout ── */
+
+.app-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-bottom: 32px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.app-header-brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.app-header-title {
+  font-size: 1.25rem;
+  font-weight: 800;
+  color: #111827;
+}
+
+.app-header-user {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.welcome-text {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #374151;
+}
+
+/* ── Panels ── */
+
+.panel-section {
+  background: #fff;
+  border: 1px solid #e5e7eb;
+  border-radius: 20px;
+  padding: 28px 24px;
+  margin-bottom: 24px;
+  box-shadow: 0 4px 20px rgba(15, 23, 42, 0.04);
+}
+
+.section-header-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-bottom: 20px;
+}
+
+.section-label {
+  margin: 0;
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: #111827;
+}
+
+/* ── Date input row ── */
+
+.date-input-row {
+  display: flex;
+  gap: 8px;
+  align-items: stretch;
+}
+
+.date-part {
+  margin: 0;
+}
+
+.date-part-sm {
+  width: 68px;
+  flex-shrink: 0;
+}
+
+.date-part-md {
+  flex: 1;
+}
+
+.date-part-lg {
+  width: 88px;
+  flex-shrink: 0;
+}
+
+/* ── Add dog button ── */
+
+.add-dog-row {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.add-dog-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: none;
+  color: #7C3AED;
+  font-size: 0.82rem;
+  font-weight: 600;
+  padding: 6px 14px;
+  border-radius: 999px;
+  border: 1.5px dashed #C4B5FD;
+  cursor: pointer;
+  box-shadow: none;
+  transition: background 0.15s, border-color 0.15s, color 0.15s;
+}
+
+.add-dog-btn:hover {
+  background: #EDE9FE;
+  border-color: #7C3AED;
+}
+
+.add-dog-btn:active {
+  background: #EDE9FE;
+}
+
+.add-dog-btn-icon {
+  font-size: 1.1rem;
+}
+
+/* ── Dog grid ── */
+
+.dog-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+  gap: 14px;
+}
+
+.dog-card {
+  background: #f9fafb;
+  border: 1px solid #e5e7eb;
+  border-radius: 16px;
+  padding: 16px 12px 14px;
+  text-align: center;
+  cursor: pointer;
+  transition: border-color 0.15s, box-shadow 0.15s;
+}
+
+.dog-card:hover {
+  border-color: #7C3AED;
+  box-shadow: 0 4px 16px rgba(124, 58, 237, 0.15);
+}
+
+.dog-card-photo {
+  width: var(--dog-photo-size, 64px);
+  height: var(--dog-photo-size, 64px);
+  border-radius: 50%;
+  object-fit: cover;
+  margin: 0 auto 10px;
+  display: block;
+  background: #EDE9FE;
+  border: 2px solid #C4B5FD;
+}
+
+.dog-card-photo-placeholder {
+  width: var(--dog-photo-size, 64px);
+  height: var(--dog-photo-size, 64px);
+  border-radius: 50%;
+  background: #EDE9FE;
+  border: 2px solid #C4B5FD;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 10px;
+  color: #5B21B6;
+}
+
+.dog-card-name {
+  font-size: 0.92rem;
+  font-weight: 700;
+  color: #111827;
+  margin: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.dog-card-meta {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: #5B21B6;
+  margin: 3px 0 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.dog-card-vet {
+  font-size: 0.78rem;
+  color: #6b7280;
+  margin: 3px 0 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.add-dog-card {
+  background: #F5F3FF;
+  border: 2px dashed #C4B5FD;
+  border-radius: 16px;
+  padding: 20px 12px;
+  text-align: center;
+  cursor: pointer;
+  color: #5B21B6;
+  font-weight: 700;
+  font-size: 0.92rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  transition: background 0.15s;
+  min-height: 110px;
+}
+
+.add-dog-card:hover {
+  background: #EDE9FE;
+}
+
+.add-dog-card-icon {
+  font-size: 1.6rem;
+  line-height: 1;
+}
+
+/* ── Today banner ── */
+
+.today-banner {
+  background: #EDE9FE;
+  border: 1px solid #C4B5FD;
+  border-radius: 12px;
+  padding: 10px 16px;
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: #6F4A2F;
+  margin-bottom: 16px;
+  text-align: center;
+  letter-spacing: 0.01em;
+}
+
+/* ── Calendar ── */
+
+.calendar-nav {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.cal-month-label {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: #111827;
+  min-width: 130px;
+  text-align: center;
+}
+
+.calendar-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 4px;
+}
+
+.cal-day-header {
+  text-align: center;
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: #9ca3af;
+  padding: 4px 0 8px;
+  text-transform: uppercase;
+}
+
+.cal-day {
+  aspect-ratio: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border-radius: 10px;
+  font-size: 0.82rem;
+  font-weight: 500;
+  color: #374151;
+  cursor: default;
+  gap: 2px;
+}
+
+.cal-day.has-appt {
+  cursor: pointer;
+}
+
+.cal-day.has-appt:hover {
+  background: #F5F3FF;
+}
+
+.cal-day.today {
+  background: #8B5E3C;
+  color: #fff;
+  font-weight: 700;
+}
+
+.cal-day.today.has-appt {
+  background: #8B5E3C;
+}
+
+.cal-day.empty {
+  color: transparent;
+  cursor: default;
+}
+
+.cal-dot-row {
+  display: flex;
+  gap: 2px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.cal-dot {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: #7C3AED;
+}
+
+.cal-dot--vet          { background: #8B5E3C; }
+.cal-dot--grooming     { background: #ec4899; }
+.cal-dot--vaccination  { background: #f59e0b; }
+.cal-dot--dogwalker    { background: #8b5cf6; }
+.cal-dot--other        { background: #7C3AED; }
+
+.cal-day.today .cal-dot {
+  background: rgba(255, 255, 255, 0.85);
+}
+
+.cal-birthday-icon {
+  font-size: 0.55rem;
+  line-height: 1;
+  display: block;
+}
+
+.cal-day.has-birthday:not(.today) {
+  background: #fdf2f8;
+}
+
+.cal-day.has-birthday.today {
+  background: #8B5E3C;
+}
+
+/* ── Upcoming list ── */
+
+.upcoming-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.upcoming-empty {
+  color: #9ca3af;
+  font-size: 0.95rem;
+  text-align: center;
+  padding: 16px 0;
+}
+
+.appt-item {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  background: #f9fafb;
+  border: 1px solid #e5e7eb;
+  border-radius: 14px;
+  padding: 14px 16px;
+  cursor: pointer;
+  transition: border-color 0.15s;
+}
+
+.appt-item:hover {
+  border-color: #8B5E3C;
+}
+
+.appt-item-date {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-width: 48px;
+  background: #EDE9FE;
+  border-radius: 10px;
+  padding: 8px 4px;
+  color: #8B5E3C;
+}
+
+.appt-date-day {
+  font-size: 1.25rem;
+  font-weight: 800;
+  line-height: 1;
+}
+
+.appt-date-month {
+  font-size: 0.68rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.appt-item-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.appt-item-title {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: #111827;
+  margin: 0 0 3px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.appt-item-sub {
+  font-size: 0.82rem;
+  color: #6b7280;
+  margin: 0;
+}
+
+.appt-type-badge {
+  font-size: 0.75rem;
+  font-weight: 700;
+  padding: 4px 10px;
+  border-radius: 999px;
+  background: #EDE9FE;
+  color: #4C1D95;
+  white-space: nowrap;
+}
+
+.appt-type-badge.vet { background: #dcfce7; color: #166534; }
+.appt-type-badge.grooming { background: #fce7f3; color: #9d174d; }
+.appt-type-badge.vaccination { background: #fef3c7; color: #92400e; }
+.appt-type-badge.walk { background: #ede9fe; color: #5b21b6; }
+.appt-type-badge.training { background: #fff7ed; color: #9a3412; }
+
+/* ── Forms (dog & appointment) ── */
+
+.form-view {
+  max-width: 540px;
+}
+
+.form-title {
+  font-size: 1.4rem;
+  font-weight: 800;
+  margin: 0 0 28px;
+}
+
+.sub-section-label {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: #374151;
+  margin: 28px 0 0;
+  padding-top: 20px;
+  border-top: 1px solid #f3f4f6;
+}
+
+.data-form {
+  display: flex;
+  flex-direction: column;
+}
+
+.data-form select {
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%236b7280' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 14px center;
+  padding-right: 40px;
+}
+
+.photo-upload-area {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 28px;
+}
+
+.photo-preview {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  background: #EDE9FE;
+  border: 3px solid #C4B5FD;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  color: #5B21B6;
+}
+
+.photo-preview img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.photo-upload-btn {
+  cursor: pointer;
+}
+
+.required {
+  color: #ef4444;
+}
+
+.form-actions {
+  display: flex;
+  gap: 12px;
+  margin-top: 32px;
+  flex-wrap: wrap;
+}
+
+/* ── Status ── */
+
+.app-status {
+  margin-top: 20px;
+  text-align: center;
+  font-size: 0.9rem;
+  color: #6b7280;
+  min-height: 1.4em;
+}
+
+/* ── Responsive ── */
+
+@media (max-width: 480px) {
+  .auth-card {
+    padding: 36px 24px 32px;
+  }
+
+  .panel-section {
+    padding: 20px 16px;
+  }
+
+  .dog-grid {
+    grid-template-columns: repeat(auto-fill, minmax(110px, 1fr));
+  }
+}

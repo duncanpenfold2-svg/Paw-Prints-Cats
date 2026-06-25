@@ -1,0 +1,260 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Paw Prints — Cats</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body class="auth-page">
+    <main class="app">
+
+      <!-- AUTH SCREEN -->
+      <section id="authSection" class="auth-card">
+        <header class="hero hero--auth">
+          <div class="paw-icon" aria-hidden="true">
+            <svg viewBox="0 0 32 32" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+              <!-- Cat ears -->
+              <path d="M6 12 L9 4 L14 10 Z"/>
+              <path d="M26 12 L23 4 L18 10 Z"/>
+              <!-- Cat face / head shape -->
+              <ellipse cx="16" cy="18" rx="10" ry="9"/>
+            </svg>
+          </div>
+          <h1>Paw Prints — Cats</h1>
+          <p>Keep your cats' health &amp; care organised</p>
+        </header>
+
+        <!-- Tabs -->
+        <div class="auth-tabs" role="tablist">
+          <button class="auth-tab active" id="tabLogin" role="tab" aria-selected="true" aria-controls="panelLogin">Login</button>
+          <button class="auth-tab" id="tabRegister" role="tab" aria-selected="false" aria-controls="panelRegister">Create Account</button>
+        </div>
+
+        <!-- Login panel -->
+        <div id="panelLogin" class="auth-panel" role="tabpanel">
+          <form id="loginForm" class="auth-form" novalidate>
+            <label class="field-label" for="loginEmail">Email</label>
+            <input id="loginEmail" type="email" placeholder="you@example.com" autocomplete="email" required />
+            <label class="field-label" for="loginPassword">Password</label>
+            <div class="password-wrap">
+              <input id="loginPassword" type="password" placeholder="Password" autocomplete="current-password" required />
+              <button type="button" class="eye-btn" data-target="loginPassword" aria-label="Show password">
+                <svg class="eye-icon eye-open" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+                <svg class="eye-icon eye-closed hidden" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94"/><path d="M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19"/><line x1="1" y1="1" x2="23" y2="23"/></svg>
+                <span class="eye-label eye-label-show">Show</span>
+                <span class="eye-label eye-label-hide hidden">Hide</span>
+              </button>
+            </div>
+            <button type="submit" class="primary-btn auth-submit-btn">Login</button>
+          </form>
+        </div>
+
+        <!-- Register panel -->
+        <div id="panelRegister" class="auth-panel hidden" role="tabpanel">
+          <form id="registerForm" class="auth-form" novalidate>
+            <label class="field-label" for="regName">Your name</label>
+            <input id="regName" type="text" placeholder="Jane Smith" autocomplete="name" required />
+            <label class="field-label" for="regEmail">Email</label>
+            <input id="regEmail" type="email" placeholder="you@example.com" autocomplete="email" required />
+            <label class="field-label" for="regPassword">Password</label>
+            <div class="password-wrap">
+              <input id="regPassword" type="password" placeholder="Choose a password (6+ characters)" autocomplete="new-password" required />
+              <button type="button" class="eye-btn" data-target="regPassword" aria-label="Show password">
+                <svg class="eye-icon eye-open" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+                <svg class="eye-icon eye-closed hidden" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94"/><path d="M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19"/><line x1="1" y1="1" x2="23" y2="23"/></svg>
+                <span class="eye-label eye-label-show">Show</span>
+                <span class="eye-label eye-label-hide hidden">Hide</span>
+              </button>
+            </div>
+            <button type="submit" class="primary-btn auth-submit-btn">Create Account</button>
+          </form>
+        </div>
+
+        <p id="authStatus" class="status auth-status"></p>
+      </section>
+
+      <!-- MAIN APP -->
+      <section id="appSection" class="hidden app-main">
+
+        <!-- Header -->
+        <header class="app-header">
+          <div class="app-header-brand">
+            <div class="paw-icon paw-icon--small" aria-hidden="true">
+              <svg viewBox="0 0 32 32" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                <path d="M6 12 L9 4 L14 10 Z"/>
+                <path d="M26 12 L23 4 L18 10 Z"/>
+                <ellipse cx="16" cy="18" rx="10" ry="9"/>
+              </svg>
+            </div>
+            <span class="app-header-title">Paw Prints — Cats</span>
+          </div>
+          <div class="app-header-user">
+            <span id="welcomeText" class="welcome-text"></span>
+            <button id="logoutBtn" class="mini-btn">Log Out</button>
+          </div>
+        </header>
+
+        <!-- DASHBOARD VIEW -->
+        <div id="viewDashboard">
+
+          <!-- Cats section -->
+          <section class="panel-section">
+            <div class="section-header-row">
+              <h2 class="section-label">My Cats</h2>
+            </div>
+            <div id="catGrid" class="dog-grid"></div>
+            <div class="add-dog-row">
+              <button id="addCatBtn" class="add-dog-btn">
+                <span class="add-dog-btn-icon">🐱</span> Add Cat
+              </button>
+            </div>
+          </section>
+
+          <!-- Calendar section -->
+          <section class="panel-section">
+            <div class="section-header-row">
+              <h2 class="section-label">Calendar</h2>
+              <div class="calendar-nav">
+                <button id="calPrevBtn" class="mini-btn" aria-label="Previous month">&#8249;</button>
+                <span id="calMonthLabel" class="cal-month-label"></span>
+                <button id="calNextBtn" class="mini-btn" aria-label="Next month">&#8250;</button>
+              </div>
+            </div>
+            <div id="todayBanner" class="today-banner" aria-live="polite"></div>
+            <div id="calendarGrid" class="calendar-grid"></div>
+          </section>
+
+          <!-- Upcoming appointments section -->
+          <section class="panel-section">
+            <div class="section-header-row">
+              <h2 class="section-label">Upcoming</h2>
+              <button id="addApptBtn" class="mini-btn accent-btn">+ Add Appointment</button>
+            </div>
+            <div id="upcomingList" class="upcoming-list"></div>
+          </section>
+
+          <p id="appStatus" class="app-status"></p>
+        </div>
+
+        <!-- CAT FORM VIEW -->
+        <div id="viewCatForm" class="hidden form-view">
+          <button class="back-btn" id="backFromCatBtn">&#8592; Back</button>
+          <h2 id="catFormTitle" class="form-title">Add Cat</h2>
+          <form id="catForm" class="data-form" novalidate>
+            <input type="hidden" id="catId" />
+
+            <div class="photo-upload-area">
+              <div class="photo-preview" id="photoPreview"></div>
+              <label class="mini-btn photo-upload-btn">
+                Upload Photo
+                <input type="file" id="catPhoto" accept="image/*" class="hidden" />
+              </label>
+            </div>
+
+            <label class="field-label" for="catName">Cat Name <span class="required">*</span></label>
+            <input id="catName" type="text" placeholder="e.g. Luna" required />
+
+            <h3 class="sub-section-label">Cat Details</h3>
+            <label class="field-label">Date of Birth</label>
+            <div class="date-input-row">
+              <input id="catDobDay"   type="number" min="1" max="31" placeholder="DD"   class="date-part date-part-sm" />
+              <select id="catDobMonth" class="date-part date-part-md">
+                <option value="">Month</option>
+                <option value="01">January</option>
+                <option value="02">February</option>
+                <option value="03">March</option>
+                <option value="04">April</option>
+                <option value="05">May</option>
+                <option value="06">June</option>
+                <option value="07">July</option>
+                <option value="08">August</option>
+                <option value="09">September</option>
+                <option value="10">October</option>
+                <option value="11">November</option>
+                <option value="12">December</option>
+              </select>
+              <input id="catDobYear"  type="number" min="1990" max="2035" placeholder="YYYY" class="date-part date-part-lg" />
+            </div>
+
+            <label class="field-label" for="catWeight">Weight (kg)</label>
+            <input id="catWeight" type="number" step="0.1" min="0" placeholder="e.g. 4.5" />
+
+            <h3 class="sub-section-label">Vet Details</h3>
+            <label class="field-label" for="vetName">Vet / Practice Name</label>
+            <input id="vetName" type="text" placeholder="e.g. City Vets" />
+
+            <label class="field-label" for="vetAddress">Address</label>
+            <textarea id="vetAddress" rows="2" placeholder="e.g. 12 High Street, London"></textarea>
+
+            <label class="field-label" for="vetPhone">Phone Number</label>
+            <input id="vetPhone" type="tel" placeholder="e.g. 020 1234 5678" />
+
+            <div class="form-actions">
+              <button type="submit" class="primary-btn">Save Cat</button>
+              <button type="button" id="deleteCatBtn" class="mini-btn danger hidden">Delete Cat</button>
+            </div>
+          </form>
+        </div>
+
+        <!-- APPOINTMENT FORM VIEW -->
+        <div id="viewApptForm" class="hidden form-view">
+          <button class="back-btn" id="backFromApptBtn">&#8592; Back</button>
+          <h2 id="apptFormTitle" class="form-title">Add Appointment</h2>
+          <form id="apptForm" class="data-form" novalidate>
+            <input type="hidden" id="apptId" />
+
+            <label class="field-label" for="apptCat">Cat <span class="required">*</span></label>
+            <select id="apptCat" required></select>
+
+            <label class="field-label">Date <span class="required">*</span></label>
+            <div class="date-input-row">
+              <input id="apptDateDay"   type="number" min="1" max="31" placeholder="DD"   class="date-part date-part-sm" />
+              <select id="apptDateMonth" class="date-part date-part-md">
+                <option value="">Month</option>
+                <option value="01">January</option>
+                <option value="02">February</option>
+                <option value="03">March</option>
+                <option value="04">April</option>
+                <option value="05">May</option>
+                <option value="06">June</option>
+                <option value="07">July</option>
+                <option value="08">August</option>
+                <option value="09">September</option>
+                <option value="10">October</option>
+                <option value="11">November</option>
+                <option value="12">December</option>
+              </select>
+              <input id="apptDateYear"  type="number" min="2020" max="2035" placeholder="YYYY" class="date-part date-part-lg" />
+            </div>
+
+            <label class="field-label" for="apptTime">Time</label>
+            <input id="apptTime" type="time" />
+
+            <label class="field-label" for="apptType">Type</label>
+            <select id="apptType">
+              <option value="Vet">Vet</option>
+              <option value="Grooming">Grooming</option>
+              <option value="Vaccination">Vaccination</option>
+              <option value="Training">Training</option>
+              <option value="Play Time">Play Time</option>
+              <option value="Other">Other</option>
+            </select>
+
+            <label class="field-label" for="apptNotes">Notes</label>
+            <textarea id="apptNotes" rows="3" placeholder="Any extra details..."></textarea>
+
+            <div class="form-actions">
+              <button type="submit" class="primary-btn">Save Appointment</button>
+              <button type="button" id="deleteApptBtn" class="mini-btn danger hidden">Delete</button>
+            </div>
+          </form>
+        </div>
+
+      </section>
+
+    </main>
+    <script src="auth.js"></script>
+    <script src="app.js"></script>
+  </body>
+</html>
