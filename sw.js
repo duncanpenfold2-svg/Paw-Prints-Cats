@@ -1,4 +1,4 @@
-const CACHE = "cat-tracker-v1";
+const CACHE = "cat-tracker-v2";
 const ASSETS = ["/", "/index.html", "/style.css", "/app.js", "/auth.js"];
 
 self.addEventListener("install", (e) => {
