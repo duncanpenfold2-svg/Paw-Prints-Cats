@@ -1,4 +1,4 @@
-const CACHE = "cat-tracker-v5";
+const CACHE = "cat-tracker-v6";
 const ASSETS = ["/", "/index.html", "/style.css", "/app.js", "/auth.js"];
 
 self.addEventListener("install", (e) => {
@@ -18,16 +18,10 @@ self.addEventListener("activate", (e) => {
 self.addEventListener("fetch", (e) => {
   if (e.request.method !== "GET") return;
   e.respondWith(
-    caches.match(e.request).then((cached) => {
-      if (cached) return cached;
-      return fetch(e.request).then((res) => {
-        const url = new URL(e.request.url);
-        if (url.origin === self.location.origin) {
-          const clone = res.clone();
-          caches.open(CACHE).then((c) => c.put(e.request, clone));
-        }
-        return res;
-      }).catch(() => cached);
-    })
+    fetch(e.request).then((res) => {
+      const clone = res.clone();
+      caches.open(CACHE).then((c) => c.put(e.request, clone));
+      return res;
+    }).catch(() => caches.match(e.request))
   );
 });
