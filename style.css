@@ -133,7 +133,7 @@ h1 {
 .field-label {
   display: block;
   margin: 20px 0 8px;
-  font-size: 0.95rem;
+  font-size: 1rem;
   font-weight: 600;
   color: #374151;
 }
@@ -152,10 +152,10 @@ h1 {
 .data-form textarea,
 .data-form select {
   width: 100%;
-  padding: 16px 18px;
+  padding: 18px 20px;
   border-radius: 12px;
   border: 1px solid #d1d5db;
-  font-size: 1.1rem;
+  font-size: 1.2rem;
   color: #111827;
   background: #fff;
   font-family: inherit;
@@ -374,7 +374,7 @@ button:disabled {
 }
 
 .date-part-sm {
-  width: 80px;
+  width: 90px;
   flex-shrink: 0;
 }
 
@@ -383,7 +383,7 @@ button:disabled {
 }
 
 .date-part-lg {
-  width: 102px;
+  width: 115px;
   flex-shrink: 0;
 }
 
