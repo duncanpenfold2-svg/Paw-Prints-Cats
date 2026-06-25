@@ -736,11 +736,13 @@ button:disabled {
   white-space: nowrap;
 }
 
-.appt-type-badge.vet { background: #dcfce7; color: #166534; }
-.appt-type-badge.grooming { background: #fce7f3; color: #9d174d; }
-.appt-type-badge.vaccination { background: #fef3c7; color: #92400e; }
-.appt-type-badge.walk { background: #ede9fe; color: #5b21b6; }
-.appt-type-badge.training { background: #fff7ed; color: #9a3412; }
+.appt-type-badge.vet            { background: #dcfce7; color: #166534; }
+.appt-type-badge.vaccination    { background: #fef3c7; color: #92400e; }
+.appt-type-badge.grooming       { background: #fce7f3; color: #9d174d; }
+.appt-type-badge.fleatreatment  { background: #e0f2fe; color: #0369a1; }
+.appt-type-badge.worming        { background: #f0fdf4; color: #15803d; }
+.appt-type-badge.dental         { background: #fff1f2; color: #be123c; }
+.appt-type-badge.playtime       { background: #ede9fe; color: #5b21b6; }
 
 /* ── Forms (dog & appointment) ── */
 
