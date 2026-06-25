@@ -845,4 +845,20 @@ button:disabled {
   .dog-grid {
     grid-template-columns: repeat(auto-fill, minmax(110px, 1fr));
   }
+
+  .date-input-row {
+    flex-wrap: wrap;
+  }
+
+  .date-part-sm {
+    width: 80px;
+  }
+
+  .date-part-md {
+    min-width: 140px;
+  }
+
+  .date-part-lg {
+    width: 100px;
+  }
 }
