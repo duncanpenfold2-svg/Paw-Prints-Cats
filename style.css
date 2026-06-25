@@ -147,6 +147,7 @@ h1 {
 .data-form input[type="email"],
 .data-form input[type="password"],
 .data-form input[type="tel"],
+.data-form input[type="number"],
 .data-form input[type="date"],
 .data-form input[type="time"],
 .data-form textarea,
