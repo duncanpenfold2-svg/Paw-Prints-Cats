@@ -32,7 +32,11 @@ function loadCats() {
 }
 
 function saveCats(cats) {
-  localStorage.setItem(catsKey(), JSON.stringify(cats));
+  try {
+    localStorage.setItem(catsKey(), JSON.stringify(cats));
+  } catch {
+    setAppStatus("Could not save — storage full. Try removing a photo.");
+  }
 }
 
 function loadAppts() {
@@ -43,7 +47,11 @@ function loadAppts() {
 }
 
 function saveAppts(appts) {
-  localStorage.setItem(apptsKey(), JSON.stringify(appts));
+  try {
+    localStorage.setItem(apptsKey(), JSON.stringify(appts));
+  } catch {
+    setAppStatus("Could not save appointment — storage full.");
+  }
 }
 
 function newId() {
@@ -350,12 +358,22 @@ function handlePhotoChange(e) {
   if (!file) return;
   const reader = new FileReader();
   reader.onload = (ev) => {
-    const preview = document.getElementById("photoPreview");
-    preview.innerHTML = "";
-    const img = document.createElement("img");
-    img.src = ev.target.result;
-    img.alt = "Preview";
-    preview.appendChild(img);
+    const source = new Image();
+    source.onload = () => {
+      const MAX = 320;
+      const scale = Math.min(1, MAX / Math.max(source.width, source.height));
+      const canvas = document.createElement("canvas");
+      canvas.width  = Math.round(source.width  * scale);
+      canvas.height = Math.round(source.height * scale);
+      canvas.getContext("2d").drawImage(source, 0, 0, canvas.width, canvas.height);
+      const preview = document.getElementById("photoPreview");
+      preview.innerHTML = "";
+      const img = document.createElement("img");
+      img.src = canvas.toDataURL("image/jpeg", 0.75);
+      img.alt = "Preview";
+      preview.appendChild(img);
+    };
+    source.src = ev.target.result;
   };
   reader.readAsDataURL(file);
 }
